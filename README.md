@@ -1,1 +1,1 @@
-# findFunctionName
+# findFuncName
