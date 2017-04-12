@@ -1,17 +1,17 @@
 # findFuncName
 
 findFuncName <- function(incognito, verbose=F) {
-  # Finds a function name by its value/function object through a top-to-bottom
+  # Finds a custom function's name by its function object through a top-to-bottom
   # search down the callstack (searchstack = rev(callstack)).
   # @param {closure} incognito Function object to get the name for
   # @param {bool} verbose Should search info be printed to the console?
   # @return {chr} Function name if match found else NULL
-  searchstack <- rev(sys.parents())
   # accumulator
   g.get.out <- list()
   # default return value
   found <- NULL
   # searching
+  searchstack <- rev(sys.parents())
   i <- searchstack[1]
   while (i >= 0) {
     # list names in current frame
@@ -51,3 +51,6 @@ findFuncName <- function(incognito, verbose=F) {
 #   zoo <- function() 1L
 #   (function() findFuncName(function() 1L, T))()
 # })()
+
+# xp.base <- getNamespaceExports('base')
+# 
