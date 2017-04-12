@@ -1,6 +1,6 @@
 # findFuncName
 
-Find the name of a custom in-memory and user-defined function by passing its literal function body to `findFuncName()`. It does a top-to-bottom search down the callstack and if found returns the name of the function else `NULL`.
+Find the name of a custom in-memory user-defined function by passing its literal function object to `findFuncName()`. It does a top-to-bottom search down the callstack and if matched returns the name of the matched function object else `NULL`.
 
 Useful for writing higher-order functions and figuring out whether input functions are named or anonymous.
 
