@@ -6,18 +6,16 @@ findFuncName <- function(incognito, verbose=F) {
   # @param {closure} incognito Function object to get the name for
   # @param {bool} verbose Should search info be printed to the console?
   # @return {chr} Function name if match found else NULL
-  # accumulator
-  g.get.out <- list()
   # default return value
   found <- NULL
   # searching
   searchstack <- rev(sys.parents())
-  i <- searchstack[1]
-  while (i >= 0) {
+  i <- searchstack[1L]
+  while (i >= 0L) {
     # list names in current frame
     ls.out <- ls(envir=sys.frame(i))
     # searching lazy
-    if (length(ls.out) > 0) {
+    if (length(ls.out) > 0L) {
       # if any list values in current frame
       get.out <- mget(ls.out, envir=sys.frame(i), ifnotfound=list(NULL))
       # and reduce to match case (if any)
@@ -30,27 +28,19 @@ findFuncName <- function(incognito, verbose=F) {
     if (verbose) {
       message('frame: ', i, '\nnames in current frame:')
       print(ls.out)
-      message('match found:')
-      print(if (length(ls.out) > 0 && length(cut.out) > 0) cut.out[1] else NULL)
+      if (length(ls.out) > 0L && length(cut.out) > 0L) {
+        message('match found:')
+        print(cut.out[1L])
+      }
     }
     # check if match was found in current iteration
-    if (length(ls.out) > 0 && length(cut.out) > 0) {
+    if (length(ls.out) > 0L && length(cut.out) > 0L) {
       # returning first match within the searchstack only
-      found <- names(cut.out[1])
+      found <- names(cut.out[1L])
       break
     }
-    i <- i - 1
+    i <- i - 1L
   }
   # exit
   return(found)
 }
-
-# pop this in the console::
-# moo <- function() 1L
-# (function() {
-#   zoo <- function() 1L
-#   (function() findFuncName(function() 1L, T))()
-# })()
-
-# xp.base <- getNamespaceExports('base')
-# 
