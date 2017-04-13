@@ -2,7 +2,9 @@
 
 Find the name of a custom in-memory user-defined function by passing its literal function object to `findFuncName()`. It does a top-to-bottom search down the callstack and if matched returns the name of the matched function object else `NULL`.
 
-Useful for writing higher-order functions and figuring out whether input functions are named or anonymous.
+~~Useful for writing higher-order functions and figuring out whether input functions are named or anonymous.~~
+
+*A better way to check whether input functions are named or anonymous is to call `match.call()` within a higher order function.*
 
 ### Note
 
