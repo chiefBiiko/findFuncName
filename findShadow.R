@@ -10,18 +10,20 @@ findShadow <- function(game) {
               inherits=F)) {
     stop('the given name is not bound in the current scope')
   }
-  # default return value
-  found <- list()
   # search setup
   searchstack <- rev(sys.parents())
   # not searching in callee's scope
   i <- if (length(searchstack) > 1L) searchstack[2L] else 0L
+  # default return value
+  found <- list()
   repeat {
     ls.out <- ls(envir=sys.frame(i),  # list matching names in current frame
                  pattern=paste0('^', deparse(substitute(game)), '$'))
     if (length(ls.out) > 0L) {  # if match found
       found[[paste0('frame', as.character(i))]] <-  # append to found
         get(ls.out, envir=sys.frame(i))
+    } else { 
+      found[[paste0('frame', as.character(i))]] <- vector() 
     }
     i <- i - 1L  # moonwalking
     if (i < 0L) break  # been time
