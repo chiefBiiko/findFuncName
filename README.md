@@ -2,7 +2,7 @@
 
 Traverse the callstack in reverse order and look for identical names or values.
 
-`findClones` and `findshadow` both take a name as input that must be defined in the same scope as the functions are called in.
+`findClones` and `findShadow` both take a name as input that must be defined in the same scope as the functions are called in.
 
 ### `findClones`
 
