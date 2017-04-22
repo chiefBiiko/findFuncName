@@ -1,8 +1,8 @@
 # moonwalk
 
-Traverse the callstack in reverse order and look for identical names or values.
+Traverse the callstack in reverse order and look for identical values or names.
 
-`findClones` and `findShadow` both take a name as input that must be defined in the same scope as the functions are called in.
+`findClones` and `findShadow` both take a name as input (which must be defined in the same scope as the functions are called in) and return a named list. `findClones` matches by value whereas `findShadow` matches by name.
 
 ### `findClones`
 
